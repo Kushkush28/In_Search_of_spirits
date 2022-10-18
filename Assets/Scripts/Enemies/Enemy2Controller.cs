@@ -33,7 +33,7 @@ public class Enemy2Controller : MonoBehaviour
             if (timeBetweenShots <= 0)
             {
                 GameObject bullet = Instantiate(projectile, transform.position, Quaternion.identity);
-                bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+                bullet.GetComponent<Rigidbody2D>().AddForce(-lookDirection* bulletForce, ForceMode2D.Impulse);
                 timeBetweenShots = startTimeBetweenShots;
             }
             else
