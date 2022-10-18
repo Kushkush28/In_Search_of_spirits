@@ -15,6 +15,8 @@ public class Enemy2Controller : MonoBehaviour
     public float startTimeBetweenShots;
     public GameObject projectile;
     public float bulletForce = 10f;
+
+    public bool isRanged=true;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,21 +29,23 @@ public class Enemy2Controller : MonoBehaviour
         Vector2 lookDirection = transform.position - player.position;
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg + 90f;
         //this.gameObject.GetComponent<Rigidbody2D>().rotation = angle;
-
-        if (Vector2.Distance(transform.position,player.position)<=range) 
-        {
-            if (timeBetweenShots <= 0)
+        if (isRanged) {
+            if (Vector2.Distance(transform.position, player.position) <= range)
             {
-                GameObject bullet = Instantiate(projectile, transform.position, Quaternion.identity);
-                bullet.GetComponent<Rigidbody2D>().AddForce(-lookDirection* bulletForce, ForceMode2D.Impulse);
-                timeBetweenShots = startTimeBetweenShots;
-            }
-            else
-            {
-                timeBetweenShots -= Time.deltaTime;
-            }
+                if (timeBetweenShots <= 0)
+                {
+                    GameObject bullet = Instantiate(projectile, transform.position, Quaternion.identity);
+                    bullet.GetComponent<Rigidbody2D>().AddForce(-lookDirection * bulletForce, ForceMode2D.Impulse);
+                    timeBetweenShots = startTimeBetweenShots;
+                }
+                else
+                {
+                    timeBetweenShots -= Time.deltaTime;
+                }
 
+            }
         }
+       
        
 
     }

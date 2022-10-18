@@ -12,7 +12,15 @@ public class PlayerHealthController : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        hpSlider.value = currentHealth;
 
+    }
+    private void OnEnable()
+    {
+        hpSlider.value = currentHealth;
+    }
+    private void Awake()
+    {
         
     }
 
