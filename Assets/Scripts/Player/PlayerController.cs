@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private float jumpTimeCounter;
     public float jumpTime;
     private bool isJumping;
+    private float yLocation;
+        private float maxYLocation;
 
    
 
@@ -32,6 +34,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+        moveInput = Input.GetAxisRaw("Horizontal");
+
+        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        if (isRightFacing == false && moveInput > 0)
+        {
+            FlipPlayerDirection();
+
+        }
+        else if (isRightFacing == true && moveInput < 0)
+        {
+            FlipPlayerDirection();
+        }
         if (isGrounded) 
         {
             extraJumps = extraJumpValue;
@@ -40,20 +55,22 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)&& extraJumps>0) 
         {
             isJumping = true;
+            maxYLocation = yLocation;
             jumpTimeCounter = jumpTime;
-            rb.AddForce(Vector2.up * jumpForce);
+            rb.velocity = Vector2.up * jumpForce;
             extraJumps--;
         }
         if (Input.GetKey(KeyCode.Space)&& extraJumps==0 &&isGrounded==true) 
         {
-            rb.AddForce(Vector2.up*jumpForce);
-            
+            maxYLocation = yLocation;
+            rb.velocity = Vector2.up * jumpForce;
+
         }
         if (Input.GetKey(KeyCode.Space)) 
            {
             if (jumpTimeCounter>0)
             {
-                rb.AddForce(Vector2.up * jumpForce);
+                rb.velocity=Vector2.up * jumpForce;
                 jumpTimeCounter -= Time.deltaTime;
             }
             
@@ -62,11 +79,24 @@ public class PlayerController : MonoBehaviour
         {
             isJumping = false;
         }
+        if (isJumping) 
+        {
+           yLocation= rb.position.y;
+            if (yLocation>maxYLocation) 
+            {
+                maxYLocation = yLocation;
+            }
+           else if (yLocation<maxYLocation) 
+            {
+                rb.velocity = -Vector2.up * jumpForce*2f;
+            }
+        }
     }
     private void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position,groundCheckRadius,whatIsGround);
         moveInput = Input.GetAxisRaw("Horizontal");
+        
         rb.velocity = new Vector2(moveInput * speed , rb.velocity.y);
         if (isRightFacing == false && moveInput > 0)
         {
