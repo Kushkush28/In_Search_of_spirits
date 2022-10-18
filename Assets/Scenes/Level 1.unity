@@ -9558,6 +9558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -10161,6 +10162,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7081224936422774181, guid: fa0a66fc79e75b04d8ba21de1e3c0b4b, type: 3}
+      propertyPath: jumpForce
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7081224936422774182, guid: fa0a66fc79e75b04d8ba21de1e3c0b4b, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -10204,6 +10209,10 @@ PrefabInstance:
     - target: {fileID: 7081224936422774182, guid: fa0a66fc79e75b04d8ba21de1e3c0b4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7081224936422774183, guid: fa0a66fc79e75b04d8ba21de1e3c0b4b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa0a66fc79e75b04d8ba21de1e3c0b4b, type: 3}
