@@ -10,6 +10,7 @@ public class RangedController : MonoBehaviour
         public GameObject projectileSpawnPoint;
     private Transform player;
     public float enemyRange = 10f;
+    public bool isFlyingMelee = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,14 +20,18 @@ public class RangedController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(transform.position,player.position)<enemyRange) 
-        {
-            if (timeBtwShots <= 0)
-            { Instantiate(enemyProjectile, projectileSpawnPoint.transform.position, Quaternion.identity);
-               
-                timeBtwShots = startTimeBtwShots;
+        if (isFlyingMelee==false) {
+            if (Vector2.Distance(transform.position, player.position) < enemyRange)
+            {
+                if (timeBtwShots <= 0)
+                {
+                    Instantiate(enemyProjectile, projectileSpawnPoint.transform.position, Quaternion.identity);
+
+                    timeBtwShots = startTimeBtwShots;
+                }
+                else { timeBtwShots -= Time.deltaTime; }
             }
-            else { timeBtwShots -= Time.deltaTime; }
         }
+        
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerProjectile : MonoBehaviour
 {  public float bulletSpeed = 20f;
+    public int bulletDamage = 10;
     public float lifeTime = 5f;
 
     public GameObject destroyEffect;
@@ -35,7 +36,8 @@ public class PlayerProjectile : MonoBehaviour
             Instantiate(destroyEffect, transform.position, Quaternion.identity);
         }
         if (collision.gameObject.tag=="Enemy") 
-        { 
+        {
+            collision.gameObject.GetComponent<EnemyHPController>().TakeDamage(bulletDamage);
         }
         if (collision.gameObject.tag!="Player") 
         
