@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
         {
             isJumping = false;
         }
-        if (isJumping) 
+        if (!isGrounded) 
         {
            yLocation= rb.position.y;
             if (yLocation>maxYLocation) 
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
             }
            else if (yLocation<maxYLocation) 
             {
-                rb.velocity = -Vector2.up * jumpForce*2f;
+                rb.velocity = -Vector2.up * jumpForce*1f;
             }
         }
     }
