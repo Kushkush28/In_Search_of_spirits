@@ -343,7 +343,11 @@ ScriptedImporter:
     spriteName: 
     isGroup: 0
     parentIndex: -1
+<<<<<<< Updated upstream
     spriteID: 762469983cff7454da8aa44e97eb46d9
+=======
+    spriteID: db149e94c98d61846a35b6b81c22a4be
+>>>>>>> Stashed changes
     layerID: 1139611364
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
