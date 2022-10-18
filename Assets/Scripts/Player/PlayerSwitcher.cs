@@ -16,6 +16,7 @@ public class PlayerSwitcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        updateLocations();
         if (Input.GetKeyDown(KeyCode.Alpha1)) 
         { 
             SwitchCharacters();
@@ -45,5 +46,16 @@ public class PlayerSwitcher : MonoBehaviour
         playerCharacters[1].SetActive(false);
         playerCharacters[2].SetActive(false);
     
+    }
+    void updateLocations() 
+    {
+        for (int i=0;i<playerCharacters.Length;i++) 
+        {
+            if (i!=current) 
+            {
+                playerCharacters[i].transform.position = playerCharacters[current].transform.position;
+            }
+                
+        }
     }
 }
