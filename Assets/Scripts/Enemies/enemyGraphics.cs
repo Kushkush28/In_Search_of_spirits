@@ -7,6 +7,7 @@ public class enemyGraphics : MonoBehaviour
 {
     public AIPath aiPath;
     public int knockbackForce = 10;
+    public int enemyTouchDamage = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +33,8 @@ public class enemyGraphics : MonoBehaviour
     {
         if(collision.gameObject.tag=="Player") 
         {
-            collision.rigidbody.AddForce(Vector2.left*knockbackForce);
+            collision.gameObject.GetComponent<PlayerHealthController>().TakeDamage(enemyTouchDamage);
+            Debug.Log(collision.gameObject.GetComponent<PlayerHealthController>().currentHealth);
         }
     }
 

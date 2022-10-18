@@ -2,25 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealthController : MonoBehaviour
+public class BulletController : MonoBehaviour
 {
-    public int maxHealth=100;
-    public int currentHealth;
+    public float bulletSpeed = 20f;
+    public Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb.velocity = transform.right * bulletSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
         
-    }
-
-    public void TakeDamage( int dmg) 
-    {
-        currentHealth = currentHealth -= dmg;
-    
     }
 }

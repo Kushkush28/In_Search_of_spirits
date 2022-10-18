@@ -41,19 +41,19 @@ public class PlayerController : MonoBehaviour
         {
             isJumping = true;
             jumpTimeCounter = jumpTime;
-            rb.velocity =Vector2.up*jumpForce;
+            rb.AddForce(Vector2.up * jumpForce);
             extraJumps--;
         }
         if (Input.GetKey(KeyCode.Space)&& extraJumps==0 &&isGrounded==true) 
         {
-            rb.velocity =Vector2.up*jumpForce;
+            rb.AddForce(Vector2.up*jumpForce);
             
         }
         if (Input.GetKey(KeyCode.Space)) 
            {
             if (jumpTimeCounter>0)
             {
-                rb.velocity = Vector2.up * jumpForce;
+                rb.AddForce(Vector2.up * jumpForce);
                 jumpTimeCounter -= Time.deltaTime;
             }
             
