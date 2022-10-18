@@ -24,7 +24,7 @@ public class PatrolController : MonoBehaviour
         RaycastHit2D groundInfo = Physics2D.Raycast(foot.position,Vector2.down,distance);
         RaycastHit2D wallInfo = Physics2D.Raycast(foot.position,Vector2.right,distance);
 
-        if (groundInfo.collider==false||wallInfo.collider==true) 
+        if (groundInfo.collider==false||(wallInfo.collider==true)) 
         {
             if (movingRight == true)
             {
