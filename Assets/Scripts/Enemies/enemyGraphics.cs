@@ -6,6 +6,7 @@ using Pathfinding;
 public class enemyGraphics : MonoBehaviour
 {
     public AIPath aiPath;
+    public int knockbackForce = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,4 +27,13 @@ public class enemyGraphics : MonoBehaviour
             transform.localScale = new Vector3(1f, 1f, 1f); 
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag=="Player") 
+        {
+            collision.rigidbody.AddForce(Vector2.left*knockbackForce);
+        }
+    }
+
 }
