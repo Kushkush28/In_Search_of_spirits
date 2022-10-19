@@ -1694,6 +1694,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 209466365}
+  - {fileID: 708561735}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1786,6 +1787,82 @@ Transform:
   m_Father: {fileID: 1608143697}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -9.734}
+--- !u!1 &708561734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 708561735}
+  - component: {fileID: 708561736}
+  - component: {fileID: 708561737}
+  m_Layer: 5
+  m_Name: dAMAGESCREEN
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &708561735
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708561734}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 675501119}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &708561736
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708561734}
+  m_CullTransparentMesh: 1
+--- !u!114 &708561737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708561734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 43a9ab2647b3d7e42a402c446442040c, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &832731358
 GameObject:
   m_ObjectHideFlags: 3
@@ -11348,9 +11425,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2081727578}
     - target: {fileID: 7472008792877179689, guid: cb6737b6263301e46b259d7a414c271a, type: 3}
+      propertyPath: overlay
+      value: 
+      objectReference: {fileID: 708561737}
+    - target: {fileID: 7472008792877179689, guid: cb6737b6263301e46b259d7a414c271a, type: 3}
+      propertyPath: duration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472008792877179689, guid: cb6737b6263301e46b259d7a414c271a, type: 3}
       propertyPath: hpSlider
       value: 
       objectReference: {fileID: 209466366}
+    - target: {fileID: 7472008792877179689, guid: cb6737b6263301e46b259d7a414c271a, type: 3}
+      propertyPath: fadeSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472008792877179689, guid: cb6737b6263301e46b259d7a414c271a, type: 3}
+      propertyPath: durationTimer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7472008792877179690, guid: cb6737b6263301e46b259d7a414c271a, type: 3}
       propertyPath: cam
       value: 
@@ -11721,9 +11814,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 5806488273764230799, guid: 3335ace97d6dfcd40b15c11b1cf70a07, type: 3}
+      propertyPath: overlay
+      value: 
+      objectReference: {fileID: 708561737}
+    - target: {fileID: 5806488273764230799, guid: 3335ace97d6dfcd40b15c11b1cf70a07, type: 3}
+      propertyPath: duration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806488273764230799, guid: 3335ace97d6dfcd40b15c11b1cf70a07, type: 3}
       propertyPath: hpSlider
       value: 
       objectReference: {fileID: 209466366}
+    - target: {fileID: 5806488273764230799, guid: 3335ace97d6dfcd40b15c11b1cf70a07, type: 3}
+      propertyPath: fadeSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806488273764230799, guid: 3335ace97d6dfcd40b15c11b1cf70a07, type: 3}
+      propertyPath: durationTimer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5806488274723931722, guid: 3335ace97d6dfcd40b15c11b1cf70a07, type: 3}
       propertyPath: cam
       value: 
@@ -11867,9 +11976,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1605696726}
     - target: {fileID: 6931362387042153608, guid: 654bc798dcdbf4544a98c3b909ea7647, type: 3}
+      propertyPath: overlay
+      value: 
+      objectReference: {fileID: 708561737}
+    - target: {fileID: 6931362387042153608, guid: 654bc798dcdbf4544a98c3b909ea7647, type: 3}
+      propertyPath: duration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931362387042153608, guid: 654bc798dcdbf4544a98c3b909ea7647, type: 3}
       propertyPath: hpSlider
       value: 
       objectReference: {fileID: 209466366}
+    - target: {fileID: 6931362387042153608, guid: 654bc798dcdbf4544a98c3b909ea7647, type: 3}
+      propertyPath: fadeSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931362387042153608, guid: 654bc798dcdbf4544a98c3b909ea7647, type: 3}
+      propertyPath: durationTimer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6931362387042153611, guid: 654bc798dcdbf4544a98c3b909ea7647, type: 3}
       propertyPath: cam
       value: 

@@ -567,7 +567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiPath: {fileID: 6322821683735702521}
-  knockbackForce: 10
+  knockbackForce: 5
   enemyTouchDamage: 10
 --- !u!114 &6322821683735702500
 MonoBehaviour:
