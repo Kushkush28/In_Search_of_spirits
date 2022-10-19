@@ -31,10 +31,17 @@ public class enemyGraphics : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag=="Player") 
+      
+        if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerHealthController>().TakeDamage(enemyTouchDamage);
-            Debug.Log(collision.gameObject.GetComponent<PlayerHealthController>().currentHealth);
+            if (collision.gameObject.GetComponent<ShieldController>() != null)
+            {
+                if (collision.gameObject.GetComponent<ShieldController>().shieldActive == true) { } else { collision.gameObject.GetComponent<PlayerHealthController>().TakeDamage(enemyTouchDamage); }
+
+
+            }
+            else { collision.gameObject.GetComponent<PlayerHealthController>().TakeDamage(enemyTouchDamage); }
+
         }
     }
 

@@ -9,6 +9,7 @@ public class ShieldController : MonoBehaviour
     public float activeTime=5f;
     private float cooldowncOUNTER;
     public bool isOnCoolDown = false;
+    public bool shieldActive;
     private int playerHealth;    // Start is called before the first frame update
     void Start()
     {
@@ -18,32 +19,39 @@ public class ShieldController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (shield.active) 
+        if (shield.activeInHierarchy==true) 
         {
-           this.gameObject.GetComponent<PlayerHealthController>().currentHealth = playerHealth ;
+            this.gameObject.GetComponent<PlayerHealthController>().currentHealth = this.gameObject.GetComponent<PlayerHealthController>().maxHealth;
         }
         if (Input.GetKeyDown(KeyCode.Q)&&isOnCoolDown==false) 
         { 
             ActivateShield();
+            playerHealth = this.gameObject.GetComponent<PlayerHealthController>().currentHealth;
         }
     }
     void ActivateShield() 
     {isOnCoolDown = true;
+        this.gameObject.GetComponent<PlayerHealthController>().currentHealth = this.gameObject.GetComponent<PlayerHealthController>().maxHealth;
         shield.SetActive(true);
         this.gameObject.GetComponent<PlayerHealthController>().enabled = false;
+        shieldActive = true;
         StartCoroutine(ActiveShield());
     }
     IEnumerator ActiveShield() 
     { 
     yield return new WaitForSeconds(activeTime);
+        shieldActive = false;
+        StartCoroutine(CooldownShield());
 
+       // playerHealth = this.gameObject.GetComponent<PlayerHealthController>().currentHealth;
     }
     IEnumerator CooldownShield()
-    {   shield.SetActive(false);
+    {   
+        shield.SetActive(false);
         this.gameObject.GetComponent<PlayerHealthController>().enabled = true;
-        playerHealth = this.gameObject.GetComponent<PlayerHealthController>().currentHealth;
-        yield return new WaitForSeconds(cooldownTime);
         isOnCoolDown = false;
+        yield return new WaitForSeconds(cooldownTime);
+        
     }
     private void OnTriggerEnter(Collider other) 
     {

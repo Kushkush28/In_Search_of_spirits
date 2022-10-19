@@ -406,6 +406,7 @@ MonoBehaviour:
   projectile: {fileID: 5068772222653461012, guid: b9e92e5c55b46f1489e085386b09f8f2, type: 3}
   bulletForce: 10
   isRanged: 0
+  aipath: {fileID: 1104877185130536437}
 --- !u!114 &2949384865396667058
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class Enemy2Controller : MonoBehaviour
 {
@@ -17,9 +18,11 @@ public class Enemy2Controller : MonoBehaviour
     public float bulletForce = 10f;
 
     public bool isRanged=true;
+    public AIPath aipath;
     // Start is called before the first frame update
     void Start()
     {
+        aipath.enabled = false;
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -32,9 +35,10 @@ public class Enemy2Controller : MonoBehaviour
         if (isRanged) {
             if (Vector2.Distance(transform.position, player.position) <= range)
             {
+                aipath.enabled = true ;
                 if (timeBetweenShots <= 0)
                 {
-                    GameObject bullet = Instantiate(projectile, transform.position, Quaternion.identity);
+                    GameObject bullet = Instantiate(projectile, firePoint.position, Quaternion.identity);
                     bullet.GetComponent<Rigidbody2D>().AddForce(-lookDirection * bulletForce, ForceMode2D.Impulse);
                     timeBetweenShots = startTimeBetweenShots;
                 }
