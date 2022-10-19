@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;   
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealthController : MonoBehaviour
 {
@@ -43,7 +44,11 @@ public class PlayerHealthController : MonoBehaviour
                 overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, tempAlpha);
             }
         }
-
+        if (currentHealth<0 ) 
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
+        }
     }
 
     public void TakeDamage( int dmg) 
