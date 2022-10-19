@@ -9,6 +9,7 @@ public class PatrolController : MonoBehaviour
     public Transform foot;
     public float distance;
     private Rigidbody2D rb;
+    public int touchDamage=10;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,5 +41,13 @@ public class PatrolController : MonoBehaviour
         
         }
 
+    }
+    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerHealthController>().TakeDamage(touchDamage);
+        }
     }
 }
