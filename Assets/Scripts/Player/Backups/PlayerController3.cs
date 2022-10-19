@@ -11,9 +11,11 @@ public class PlayerController3 : MonoBehaviour
     public Transform groundcheck;
     public float checkRadius = 0.7f;
     public LayerMask whatIsGround;
+    public Animator animator;
 
     private bool facingRight;
     private int extraJumps;public int maxExtraJumps;
+    public bool isJumping = false;
 
     private Rigidbody2D rb;
 
@@ -30,8 +32,11 @@ public class PlayerController3 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && extraJumps > 0)
         {
+            isJumping = true;
             rb.velocity = Vector2.up * jumpForce;
+
             extraJumps--;
+            animator.SetBool("isJumping",true);
         } else if (Input.GetKeyDown(KeyCode.Space) && extraJumps ==0 &&isGrounded==true) 
         {
             rb.velocity = Vector2.up * jumpForce;
@@ -43,9 +48,17 @@ public class PlayerController3 : MonoBehaviour
         moveInput = Input.GetAxis("Horizontal");
         rb.velocity=new Vector2 (moveInput *speed,rb.velocity.y);
 
-        if (isGrounded) 
+        if (isGrounded)
         {
+            animator.SetBool("isFalling", false);
+            isJumping = false;
             extraJumps = maxExtraJumps;
+            animator.SetBool("isJumping", false);
+        }
+
+        if (!isGrounded &&isJumping==false) 
+        {
+            animator.SetBool("isFalling", true);
         }
         if (facingRight == true && moveInput > 0)
         {
@@ -56,6 +69,11 @@ public class PlayerController3 : MonoBehaviour
         {
             Flip();
         }
+        if (rb.velocity.magnitude==0)
+        {
+            animator.SetBool("isMoving", false);
+        }
+        else { animator.SetBool("isMoving", true); }
     }
     void Flip() 
     {
