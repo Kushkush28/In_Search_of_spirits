@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Enemy
   - PlayerProjectile
+  - Dialogue
+  - Idol
   layers:
   - Default
   - TransparentFX

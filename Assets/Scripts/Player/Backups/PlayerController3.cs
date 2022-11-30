@@ -18,11 +18,13 @@ public class PlayerController3 : MonoBehaviour
     public bool isJumping = false;
 
     private Rigidbody2D rb;
+    public GameManager manager;
 
     // Start is called before the first frame update
     void Start()
 
     {
+        manager=FindObjectOfType<GameManager>();
         extraJumps = maxExtraJumps;
         rb = GetComponent<Rigidbody2D>();
     }
@@ -81,5 +83,18 @@ public class PlayerController3 : MonoBehaviour
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler; 
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag=="Dialogue") 
+        {
+
+            animator.SetBool("isMoving", false);
+        }
+        if (collision.tag=="Idol") 
+        {
+            manager.CollectIdol();
+            Destroy(collision.gameObject);
+        }
     }
 }
